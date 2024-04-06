@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   FormControl,
   FormControlLabel,
@@ -56,7 +55,7 @@ const TxForm = () => {
   return (
     <>
       <Stack
-        minWidth={600}
+        maxWidth={600}
         height={"fit-content"}
         gap={3}
         mx={"auto"}

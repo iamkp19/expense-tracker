@@ -1,21 +1,8 @@
 import React from "react";
 import { Box, Card, Typography } from "@mui/material";
+import { formatDate } from "../utils/helper";
 
 const TxCard = ({ transaction }) => {
-  let TxDate = new Date(transaction.createdAt);
-  let FormatedDate =
-    TxDate.getFullYear() +
-    "/" +
-    (TxDate.getMonth() + 1) +
-    "/" +
-    TxDate.getDate() +
-    " " +
-    TxDate.getHours() +
-    ":" +
-    TxDate.getMinutes() +
-    ":" +
-    TxDate.getSeconds();
-
   return (
     <Card
       sx={{
@@ -25,15 +12,19 @@ const TxCard = ({ transaction }) => {
       }}
       elevation={6}
     >
-      <Typography variant="h5">{transaction.description}</Typography>
       <Typography mb={1} variant="h6">
-        Amount :{" "}
+        {transaction.description}
+      </Typography>
+      <Typography mb={1} variant="subtitle1">
+        Amount :
         {`${transaction.type == "income" ? "+" : "-"}${transaction.amount}`}
       </Typography>
       <Typography mb={1} variant="subtitle2">
         Category : {transaction.category}
       </Typography>
-      <Typography variant="subtitle2">Date : {FormatedDate}</Typography>
+      <Typography variant="subtitle2">
+        Date : {formatDate(transaction.createdAt)}
+      </Typography>
     </Card>
   );
 };
